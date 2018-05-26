@@ -1,0 +1,20 @@
+{
+  "name": "encrypted-repository-base",
+  "version": "1.0.0",
+  "description": "Encrypted repository boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "bash ./gitcmd.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moraispgsi/encrypted-repository-base.git"
+  },
+  "author": "Ricardo Morais",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moraispgsi/encrypted-repository-base/issues"
+  },
+  "homepage": "https://github.com/moraispgsi/encrypted-repository-base#readme"
+}
