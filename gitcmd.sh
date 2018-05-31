@@ -1,9 +1,11 @@
 #!/bin/bash
 
-#Remove the following warning: "warning: CRLF will be replaced by LF"
-git config --global core.safecrlf false
-git config core.autocrlf true
-git config core.safecrlf false
+##Remove the following warning: "warning: CRLF will be replaced by LF"
+#git config --global core.safecrlf false
+#git config core.autocrlf true
+#git config core.safecrlf false
+
+
 #For allowing the read command to work
 exec < /dev/tty
 
@@ -16,33 +18,44 @@ exec < /dev/tty
 
             # Runs before every git command
             on_before_command () {
-                echo 'On before command'
+                echo 'HOOK: on-before-command'
             }
 
             #Runs after every git command
             on_after_command () {
-                echo 'On after command'
+                echo 'HOOK: on-after-command'
             }
 
             # Runs before every git commit
             on_before_commit () {
-                echo 'On before commit'
+                echo 'HOOK: on-before-commit'
             }
 
             #Runs after every git commit
             on_after_commit () {
-                echo 'On after commit'
+                echo 'HOOK: on-after-commit'
             }
 
             # Runs before every git add
             on_before_add () {
-                echo 'On before add'
+                echo 'HOOK: on-before-add'
             }
 
             #Runs after every git add
             on_after_add () {
-                echo 'On after add'
+                echo 'HOOK: on-after-add'
             }
+
+            #Runs before every git pull
+            on_before_pull () {
+                echo 'HOOK: on-after-pull'
+            }
+
+            #Runs after every git add
+            on_after_pull () {
+                echo 'HOOK: on-after-pull'
+            }
+
 
 #                                                      #
 #------------------------------------------------------#
@@ -62,7 +75,7 @@ exec < /dev/tty
                 ("commit") return 0; break;;
                 ("add") return 0; break;;
                 ("pull") return 0; break;;
-                (*) return 1;;
+                (*) return 0;;
             esac
         }
 
@@ -82,10 +95,14 @@ exec < /dev/tty
                     on_after_add "$@"
                 ;;
                 ("pull")
-
+                    on_before_pull "$@"
                     echo 'pull'
+                    git $@
+                    on_after_pull "$@"
                 ;;
-                (*) return 1;;
+                (*)
+                    git $@
+                ;;
             esac
             on_after_command "$@"
         }
