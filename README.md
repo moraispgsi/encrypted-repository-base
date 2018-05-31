@@ -1,7 +1,12 @@
 # encrypted-repository-base
 
+## Motivation
+I was trying to find a way to protect an application database credentials and aws API keys and I found out about blackbox(https://github.com/StackExchange/blackbox) , a tool that allows you to protect secrets in a git repository.
 
+## Requirements
 This package requires blackbox installed on ubuntu bash.
+
+## About 
 This repository protects the user from accidentally commiting sensitive information. Blackbox saves the public key of the administrators. Sensitive files are added to a bundle of encrypted data and can only be decrypted by the registered administrators private GPG keys. 
 
 ## Reading sensitive information
