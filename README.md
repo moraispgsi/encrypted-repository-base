@@ -4,9 +4,9 @@
 This package requires blackbox installed on ubuntu bash.
 This repository protects the user from accidentally commiting sensitive information. Blackbox saves the public key of the administrators. Sensitive files are added to a bundle of encrypted data and can only be decrypted by the registered administrators private GPG keys. 
 
-##Reading sensitive information
+## Reading sensitive information
 
-###For windows:
+### For windows:
 
 **The following steps are only for reading the files, if the files are edited then you will not be able to encrypt them back. Also be aware that you should never edit the name of the file, if you do so the file will not be shred after the read operation and will most likely be commited to the repository as a regular file in plain-text**
 
@@ -18,9 +18,9 @@ This repository protects the user from accidentally commiting sensitive informat
 remove them with the following command:  
     ```blackbox_shred_all_files```
 
-##Editing sensitive information
+## Editing sensitive information
 
-###For windows:
+### For windows:
 
 **Be aware that you should never edit the name of the file, if you do so the file will not be shred after the edit operation and will most likely be committed to the repository as a regular file in plain-text**
 
@@ -30,7 +30,7 @@ remove them with the following command:
     ```blackbox_edit_end credentials.json```
 
 
-#Commands
+# Commands
 
 
 **The following commands should be used with care!**
@@ -56,10 +56,10 @@ remove them with the following command:
 | `blackbox_whatsnew <file>`          | show what has changed in the last commit for a given file               |
 
 
-##GitHooks
+## GitHooks
 This repository has a very simple hook that searches for the files that are currently being protected by blackbox and if they are still available in the repository the hook will not allow you to commit any of the files. Maybe in a later version I will improve it to chech first what was git added and only verify that those files are indeed protected or not.
 
-##FAQ
+## FAQ
 
 I'm getting an error when I shred the files using blackbox.
 R: Shred in black box is not working in windows bash. This however is only a security addon that you can skip because it only scrambles the files before removing it.
